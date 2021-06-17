@@ -1,12 +1,13 @@
 @charset "UTF-8";
 
 .nav-container {
+	font-family: san-serif;
 	display: flex;
 	flex-direction: row;
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background-color: #faf1e6;
+	background-color: #222831;
 }
 
 #content-wrap {
@@ -25,7 +26,7 @@
 }
 
 .checked {
-	background-color: #b2b8a3;
+	background-color: #4a4a4a;
 }
 
 .nav-item a {
@@ -35,12 +36,12 @@
 	padding: 25px 50px;
 	margin: 0;
 	text-decoration: none;
-	color: #2f5d62;
+	color: #EEEEEE;
 	font-weight: bold;
 }
 
 .nav-item:hover {
-	background-color: #b2b8a3;
+	background-color: #4a4a4a;
 }
 
 .nav-item:nth-child(1) {
@@ -52,10 +53,10 @@
 }
 
 .nav-item:nth-child(1) a {
-	color: #064420;
+	color: #FFD369;
 	width: 160px;
 }
 
 .nav-item:nth-child(1):hover {
-	background-color: #faf1e6;
+	background-color: #222831;
 }

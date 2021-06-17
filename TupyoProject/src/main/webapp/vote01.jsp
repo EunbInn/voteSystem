@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, kr.ac.kopo.kopo08.domain.Hubo, kr.ac.kopo.kopo08.service.HuboServiceImpl" %>
+<%@ page import="java.util.List, kr.ac.kopo.kopo08.domain.Hubo, kr.ac.kopo.kopo08.service.HuboServiceImpl,
+	kr.ac.kopo.kopo08.service.HuboService" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="./navigation.css">
 <link rel="stylesheet" type="text/css" href="./bodyAndTable.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
 	.selectBox {
 		width: 200px;
@@ -20,17 +22,17 @@
 	.input {
 		padding: 5px 20px;
 		margin-left: 10px;
-		border: 2px solid #064420;
+		border: 2px solid #393E46;
 		border-radius: 7px;
-		background-color: #064420;
-		color: #fdfaf6;
+		background-color: #393E46;
+		color: #EEEEEE;
 		font-weight: bold;
 		cursor: pointer;
 	}
 	
 	.input:hover {
-		background-color: #e4efe7;
-		color: #064420;
+		background-color: #EEEEEE;
+		color: #393E46;
 	}
 </style>
 </head>
@@ -39,7 +41,7 @@
 		<div id="nav-box">
 			<nav class="gnb">
 				<ul class="nav-container">
-					<li class="nav-item"><a href="./index.html">투표 페이지</a></li>
+					<li class="nav-item"><a href="./index.html"><i class="fas fa-chart-pie"></i>&nbsp Vote</a></li>
 					<li class="nav-item"><a href="./candidate01.jsp">후보등록</a></li>
 					<li class="nav-item checked"><a href="./vote01.jsp">투표</a></li>
 					<li class="nav-item"><a href="./showResult01.jsp">개표결과</a></li>
@@ -47,7 +49,7 @@
 			</nav>
 		</div>
 		<section>
-			<h1 id="header">투표</h1>
+			<h1 id="header"><i class="fas fa-user-check"></i>&nbsp투표</h1>
 			<hr>
 			<div id="content-wrap">	
 				<form method='post'>
@@ -55,7 +57,7 @@
 					<select name="kihoName" id="kihoName" class="selectBox">
 						<option value='none' selected>후보 선택</option> 
 			<%
-			HuboServiceImpl huboService = new HuboServiceImpl();
+			HuboService huboService = HuboServiceImpl.getInstance();
 			Hubo hubo;
 			
 			List<Hubo> huboArr = huboService.selectAll();

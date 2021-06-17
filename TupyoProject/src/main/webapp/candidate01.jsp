@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="kr.ac.kopo.kopo08.service.HuboServiceImpl, kr.ac.kopo.kopo08.domain.Hubo, java.util.List" %>
+<%@ page import="kr.ac.kopo.kopo08.service.HuboServiceImpl, kr.ac.kopo.kopo08.domain.Hubo, java.util.List,
+	kr.ac.kopo.kopo08.service.HuboService" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +11,14 @@
 <link rel="stylesheet" type="text/css" href="./bodyAndTable.css">
 <link rel="stylesheet" type="text/css" href="./candidateMain.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 <body>
 	<div id="box">
 		<div id="nav-box">
 			<nav class="gnb">
 				<ul class="nav-container">
-					<li class="nav-item"><a href="./index.html">투표 페이지</a></li>
+					<li class="nav-item"><a href="./index.html"><i class="fas fa-chart-pie"></i>&nbsp Vote</a></li>
 					<li class="nav-item checked"><a href="./candidate01.jsp">후보등록</a></li>
 					<li class="nav-item"><a href="./vote01.jsp">투표</a></li>
 					<li class="nav-item"><a href="./showResult01.jsp">개표결과</a></li>
@@ -24,7 +26,7 @@
 			</nav>
 		</div>
 		<section>
-			<h1 id="header">후보 등록</h1>
+			<h1 id="header"><i class="far fa-address-card"></i>&nbsp후보 등록</h1>
 			<hr>
 			<div id="content-wrap">
 				<table>
@@ -32,27 +34,27 @@
 					<% 
 					int newKiho = 0;
 					try {
-						HuboServiceImpl huboService = new HuboServiceImpl();
+						HuboService huboService = HuboServiceImpl.getInstance();
 						Hubo hubo;
 						
 						List<Hubo> huboList = huboService.selectAll();
-						int maxKiho = 0;
-						for (int i = 0; i < huboList.size(); i++) {
-							hubo = huboList.get(i);
-							out.println("<tr>" +
-											"<th class='title-num'>기호</th>" +
-											"<td>" + hubo.getKiho() + "</td>" +
-											"<th class='title-name'>후보명</th>" +	
-											"<td>" + hubo.getName() + "</td>" +
-											"<td>" + 
-												"<button class='delete'><a href='./candidate03.jsp?kiho=" + hubo.getKiho() + "&name=" + hubo.getName() + "'>삭제</a></button>" +
-											"</td>" +
-										"</tr>");
-							if (maxKiho < hubo.getKiho()) {
-								maxKiho = hubo.getKiho();
-							}	
+						if (huboList == null) {
+							
+						} else {
+							for (int i = 0; i < huboList.size(); i++) {
+								hubo = huboList.get(i);
+								out.println("<tr>" +
+												"<th class='title-num'>기호</th>" +
+												"<td>" + hubo.getKiho() + "</td>" +
+												"<th class='title-name'>후보명</th>" +	
+												"<td>" + hubo.getName() + "</td>" +
+												"<td>" + 
+													"<button class='delete'><a href='./candidate03.jsp?kiho=" + hubo.getKiho() + "&name=" + hubo.getName() + "'>삭제</a></button>" +
+												"</td>" +
+											"</tr>");
+							}
 						}
-						newKiho = maxKiho + 1;
+						
 					} catch (Exception e) {
 						out.println(e.getMessage());
 					}
@@ -62,7 +64,7 @@
 					<tr>
 						<form method="post">
 							<th class="title-num">기호</th>
-							<td><input type="text" name="kiho" id="kiho" value="<%=newKiho%>" readonly></td>
+							<td>자동부여</td>
 							<th class="title-name">후보명</th>
 							<td><input type="text" id="input-name" name="name" maxlength="20"
 								class="inputBox" placeholder="이름 입력"></td>

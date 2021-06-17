@@ -13,17 +13,17 @@ body {
 
 #header {
 	margin-left: 35px;
-	color: #064420;
+	color: #393E46;
 }
 
 table {
 	border-collapse: collapse;
 	width: 800px;
 	font-size: 17px;
-	border: 1px solid #b2b8a3;
+	border: 1px solid #CCCCCC;
 	background-color: white;
 }
 
 tr {
-	border-bottom: 1px solid #b2b8a3;
+	border-bottom: 1px solid #CCCCCC;
 }

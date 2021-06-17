@@ -1,16 +1,20 @@
 package kr.ac.kopo.kopo08.domain;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 public class Hubo {
 	private int kiho;
 	private String name;
+	private int voteCnt;
+	private double votePer;
 
 	public Hubo() {
 
+	}
+	
+	public Hubo(int kiho,String name) {
+		this.kiho = kiho;
+		this.name = name;
+		this.voteCnt = 0;
+		this.votePer = 0.0;
 	}
 	
 	public int getKiho() {
@@ -29,5 +33,23 @@ public class Hubo {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public int getVoteCnt() {
+		return voteCnt;
+	}
+
+	public void setVoteCnt(int voteCnt) {
+		this.voteCnt = voteCnt;
+	}
+
+	public double getVotePer() {
+		return votePer;
+	}
+
+	public void setVotePer(double votePer) {
+		this.votePer = votePer;
+	}
+	
+	
 
 }
